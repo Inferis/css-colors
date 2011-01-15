@@ -97,7 +97,10 @@
 	sscanf([g cStringUsingEncoding:NSASCIIStringEncoding], "%x", &gv);
 	sscanf([b cStringUsingEncoding:NSASCIIStringEncoding], "%x", &bv);
 	
-	return [UIColor colorWithHex:(av << 24) | (rv << 16) | (gv << 8) | bv];
+	return [UIColor colorWithRed: rv / ((CGFloat)0xFF) 
+						   green: gv / ((CGFloat)0xFF) 
+							blue: bv / ((CGFloat)0xFF)
+						   alpha: av / ((CGFloat)0xFF)];
 }
 
 + (UIColor*) colorWithHex: (uint)hex {
@@ -107,7 +110,7 @@
 	green = ((CGFloat)((hex >> 8) & 0xFF)) / ((CGFloat)0xFF);
 	blue = ((CGFloat)((hex >> 0) & 0xFF)) / ((CGFloat)0xFF);
 	alpha = hex > 0xFFFFFF ? ((CGFloat)((hex >> 24) & 0xFF)) / ((CGFloat)0xFF) : 1;
-
+	
 	return [UIColor colorWithRed: red green:green blue:blue alpha:alpha];
 }
 
