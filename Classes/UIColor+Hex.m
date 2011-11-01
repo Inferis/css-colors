@@ -80,8 +80,10 @@
 		goto eight;
 	}
 	else {
-		css = @"FF000000";
-		goto eight;
+		a = @"FF";
+		r = @"00";
+		g = @"00";
+		b = @"00";
 	}
 	
 	// parse each component separetely. This gives more accurate results than 
